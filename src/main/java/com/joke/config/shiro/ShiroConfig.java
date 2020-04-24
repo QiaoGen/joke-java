@@ -29,6 +29,14 @@ public class ShiroConfig {
 
 	static final int HASHITERATIONS = 108;
 
+	static final String DEV = "dev";
+
+//	@Value("${spring.profiles.active}")
+//	private String PROFILE;
+//
+//	@Value("${swagger2.enable}")
+//	public String Swagger;
+
 	@Bean(name = "shiroFilter")
 	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -45,6 +53,11 @@ public class ShiroConfig {
 		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
          /* 过滤链定义，从上向下顺序执行，一般将 / ** 放在最为下边:这是一个坑呢，一不小心代码就不好使了;
           authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问 */
+
+		filterChainDefinitionMap.put("/swagger-resources", "anon");
+		filterChainDefinitionMap.put("/v2/**", "anon");
+		filterChainDefinitionMap.put("/webjars/**", "anon");
+		filterChainDefinitionMap.put("/doc.html", "anon");
 		filterChainDefinitionMap.put("/userInfo/login", "anon");
 		filterChainDefinitionMap.put("/**", "authc");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
