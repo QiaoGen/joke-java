@@ -59,7 +59,7 @@ public class ShiroConfig {
 		filterChainDefinitionMap.put("/webjars/**", "anon");
 		filterChainDefinitionMap.put("/doc.html", "anon");
 		filterChainDefinitionMap.put("/userInfo/login", "anon");
-		filterChainDefinitionMap.put("/**", "authc");
+		filterChainDefinitionMap.put("/**", "anon");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 		return shiroFilterFactoryBean;
 	}
@@ -83,7 +83,7 @@ public class ShiroConfig {
 	@Bean
 	public ShiroRealm myShiroRealm(){
 		ShiroRealm shiroRealm = new ShiroRealm();
-//		myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+		shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
 		return shiroRealm;
 	}
 

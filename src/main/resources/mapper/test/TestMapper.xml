@@ -6,5 +6,8 @@
     <select id="queryAllTest" resultType="com.joke.pojo.test.Test">
         select * from "Test";
     </select>
+    <select id="queryAllUser" resultType="com.joke.pojo.test.User">
+        select * from "User"
+    </select>
 
 </mapper>
