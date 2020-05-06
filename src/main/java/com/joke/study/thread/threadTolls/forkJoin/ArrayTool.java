@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class ArrayTool {
 
-    public static final int ARRAY_LENGTH= 4000;
+    public static final int ARRAY_LENGTH = 40000000;
 
     public static int[] getArray(){
         int[] result = new int[ARRAY_LENGTH];
