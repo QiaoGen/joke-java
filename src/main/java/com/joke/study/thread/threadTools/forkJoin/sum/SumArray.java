@@ -1,4 +1,4 @@
-package com.joke.study.thread.threadTolls.forkJoin;
+package com.joke.study.thread.threadTools.forkJoin.sum;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;

@@ -20,7 +20,7 @@ public class TestController {
     private TestService testService;
 
     @ApiOperation(value = "请求调用示例", notes = "invokePost说明", httpMethod = "GET")
-    @GetMapping("/test")
+    @GetMapping("/test11")
     @ResponseBody
     public Tip executeTest(){
         return new SuccessTip(testService.queryAllUser());

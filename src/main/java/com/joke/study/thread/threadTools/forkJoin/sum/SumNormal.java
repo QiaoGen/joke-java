@@ -1,4 +1,4 @@
-package com.joke.study.thread.threadTolls.forkJoin;
+package com.joke.study.thread.threadTools.forkJoin.sum;
 
 public class SumNormal {
 
