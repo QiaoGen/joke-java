@@ -25,7 +25,9 @@ public class DeamonThread {
         thread.setName("DeamonThread");
         thread.setDaemon(true);
         thread.start();
-        thread.sleep(5);
+        Thread.sleep(5);
 //        thread.interrupt();
+
+
     }
 }
