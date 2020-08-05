@@ -26,4 +26,10 @@ public class TestController {
         return new SuccessTip(testService.queryAllUser());
     }
 
+
+    @GetMapping("/testTwo")
+    public Tip test(){
+        return new SuccessTip("这是一个网页");
+    }
+
 }
