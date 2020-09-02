@@ -22,7 +22,7 @@ public class VolitateTest {
                 @Override
                 public void run() {
                     a = 1;
-                    x = b;
+                    x = a;
                 }
             });
 

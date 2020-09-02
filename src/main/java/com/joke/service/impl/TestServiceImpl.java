@@ -1,14 +1,17 @@
 package com.joke.service.impl;
 
+import com.joke.config.tip.SuccessTip;
+import com.joke.config.tip.Tip;
 import com.joke.dao.test.TestDao;
 import com.joke.pojo.test.Test;
-import com.joke.pojo.test.User;
+import com.joke.service.TestService;
+import com.joke.utils.IpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.joke.service.TestService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -25,7 +28,9 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public List<User> queryAllUser() {
-        return testDao.queryAllUser();
+    public Tip queryAllUser(HttpServletRequest request) {
+        String ipAddress = IpUtil.getIpAddress(request);
+//        String ipAddress = IpUtil.getClientIp(request);
+        return new SuccessTip(ipAddress);
     }
 }

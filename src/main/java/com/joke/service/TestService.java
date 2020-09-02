@@ -1,13 +1,14 @@
 package com.joke.service;
 
+import com.joke.config.tip.Tip;
 import com.joke.pojo.test.Test;
-import com.joke.pojo.test.User;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface TestService {
 
     List<Test> queryAllTest();
 
-    List<User> queryAllUser();
+    Tip queryAllUser(HttpServletRequest request);
 }

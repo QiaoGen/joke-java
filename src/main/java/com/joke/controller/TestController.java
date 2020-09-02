@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Api(value = "测试Controller",tags = {"测试接口"})
 @RestController
 @RequestMapping("/test")
@@ -22,8 +24,8 @@ public class TestController {
     @ApiOperation(value = "请求调用示例", notes = "invokePost说明", httpMethod = "GET")
     @GetMapping("/test11")
     @ResponseBody
-    public Tip executeTest(){
-        return new SuccessTip(testService.queryAllUser());
+    public Tip executeTest(HttpServletRequest request){
+        return testService.queryAllUser(request);
     }
 
 
