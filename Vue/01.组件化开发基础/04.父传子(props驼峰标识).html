@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../00.lib/vue.js"></script>
+</head>
+<body>
+    <!-- 1.通过props向子组件传递数据
+         2.通过事件向父组件传递数据 -->
+    <div id="app">
+        <cpn :msg-info="message" :child-message="movies"></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <p>{{msgInfo}}</p>
+            <h2>{{childMessage}}</h2>
+            <h2 v-for="(item, index) in childMessage" :key="index">{{item}}</h2>
+        </div>
+    </template>
+
+    <script>
+        const cpn = {
+            template:'#cpn',
+            // props:['msg1','msg2'],
+            props:{
+                msgInfo:{
+                    type:String,
+                    // default:'cc',
+                    required:true
+                },
+                childMessage:{
+                    type:Array,
+                    default(){
+                        return  ['2222','3333','1111'];
+                    }
+                },
+            },
+            data(){
+                return {
+                }
+            }
+        };
+        
+        new Vue({
+            el:'#app',
+            data:{
+                message:'ok',
+                movies:['张三','ok','cc']
+            },
+            components:{
+                cpn
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../00.lib/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <cpn ></cpn>
+       
+    </div>
+    
+    <template id="cpn">
+        <div>
+            <h2>我是子组件</h2>
+            <button @click="btnClick">子按钮</button>
+        </div>
+    </template>
+    
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'你哈',
+            },
+            methods:{
+                showMesg(){
+                    console.log('11111');
+                },
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    methods: {
+                        btnClick(){
+
+                            //$parent使用非常少
+                            // this.$parent.showMesg();
+                        
+                            console.log(this.$root.message);
+                        },
+                    },
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

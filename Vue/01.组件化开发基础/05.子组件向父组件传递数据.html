@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../00.lib/vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        <cpn @cpn-click="btnClick"></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <button v-for="(item,index) in categories" @click="btnClick(item)">{{ item.name }}</button>
+        </div>
+    </template>
+
+    <script>
+        const cpn = {
+            template:'#cpn',
+            data(){
+                return{
+                    categories:[
+                        {id:'111',name:'家电'},
+                        {id:'222',name:'电子产品'},
+                        {id:'333',name:'服装服饰'},
+                        {id:'444',name:'生活用品'}
+                    ]
+                }
+            },
+            methods:{
+                btnClick(item){
+                    this.$emit('cpn-click',item);
+                    // 子组件向父组件传递参数,名称不能用驼峰命名!!!!!
+                }
+            }
+        };
+        
+        new Vue({
+            el:'#app',
+            data:{
+            },
+            components:{
+                cpn
+            },
+            methods:{
+                btnClick(item){
+                    console.log(1,item);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

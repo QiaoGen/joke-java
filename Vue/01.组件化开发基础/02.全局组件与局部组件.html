@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../00.lib/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">   
+        1
+        <button-click></button-click>
+        <button-2></button-2>
+    </div>
+
+    <div id="aaa">
+        2 <button-click></button-click>
+    </div>
+    3 <button-click></button-click>
+
+
+    <!-- 模板分离两种写法 -->
+    <template id="tem">
+        <button @click="count++">u click me {{ count }}次</button>
+    </template>
+
+    <script type="text/x-template" id="tem2">
+        <button @click="count++">u click me {{ count }}次</button>
+    </script>
+
+    <script>
+        // 全局组件
+        Vue.component('button-click', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '#tem'
+        })
+
+        // 局部组件
+        new Vue({
+            el: '#app',
+            components: {
+                'button-2': {
+                    data: function () {
+                        return {
+                            count: 0
+                        }
+                    },
+                    template: '#tem2'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

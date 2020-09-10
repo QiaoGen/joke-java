@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../00.lib/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <cpn ref='aa'></cpn>
+        <button @click="btnClick">按钮</button>
+    </div>
+    
+    <template id="cpn">
+        <div>
+            子组件
+        </div>
+    </template>
+    
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message:'你哈',
+            },
+            methods:{
+                btnClick(){
+                    // $children使用很少
+                    // console.log(this.$children);
+                    // for(item of this.$children){
+                    //     item.showMessage();
+                    // }
+
+                    // $refs => 对象类型,默认是一个空的对象
+                    this.$refs.aa.showMessage()
+                }
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    methods: {
+                        showMessage(){
+                            console.log('showMessage');
+                        },
+                    },
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
